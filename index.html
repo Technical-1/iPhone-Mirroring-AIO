@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Electron: AppleScript Cal + Native WASD</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      display: flex;
+      height: 100vh;
+    }
+    #topBar {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 50px;
+      background: #eee;
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      box-sizing: border-box;
+    }
+    #topBar button {
+      margin-right: 10px;
+    }
+    #topBar #status {
+      margin-left: 20px;
+    }
+    #sidebar {
+      width: 200px;
+      background: #f0f0f0;
+      margin-top: 50px; /* below topBar */
+      overflow-y: auto;
+    }
+    .thumb {
+      display: block;
+      width: 100%;
+      border: 2px solid transparent;
+      margin-bottom: 8px;
+      cursor: pointer;
+      object-fit: cover;
+    }
+    .thumb.selected {
+      border-color: blue;
+    }
+    #mainArea {
+      flex: 1;
+      margin-top: 50px; /* below topBar */
+      background: #ccc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    #focusedImage {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    #calibrationCanvas {
+      position: absolute;
+      pointer-events: none;
+      display: none; /* visible only during calibration */
+      border: 1px solid rgba(255,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+  <div id="topBar">
+    <button id="takeScreenshotBtn">Take Screenshot</button>
+    <button id="appleCalibrateBtn">AppleScript Calibrate</button>
+    <button id="nativeCalibrateBtn">Native Calibration</button>
+    <span id="status"></span>
+  </div>
+  <div id="sidebar"></div>
+  <div id="mainArea">
+    <img id="focusedImage" src="" alt="No image selected" />
+    <canvas id="calibrationCanvas"></canvas>
+  </div>
+  <script src="renderer.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+    "name": "take-screenshot-app",
+    "version": "1.0.0",
+    "description": "An Electron app to take screenshots using AppleScript",
+    "main": "main.js",
+    "scripts": {
+      "start": "electron ."
+    },
+    "devDependencies": {
+      "electron": "^34.2.0"
+    }
+  }
+  
